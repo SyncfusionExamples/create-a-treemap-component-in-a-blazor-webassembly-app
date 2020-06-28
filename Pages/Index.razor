@@ -1,0 +1,37 @@
+﻿@page "/"
+@using Syncfusion.Blazor.TreeMap
+
+
+<SfTreeMap DataSource="@growthReport" TValue="Country" WeightValuePath="GDP" RangeColorValuePath="GDP">
+    <TreeMapTitleSettings Text="Top 10 countries by GDP Nominal - 2015"></TreeMapTitleSettings>
+    <TreeMapLegendSettings Visible="true"></TreeMapLegendSettings>
+    <TreeMapLeafItemSettings LabelPath="Name">
+        <TreeMapLeafColorMappings>
+            <TreeMapLeafColorMapping From="1" To="3000" Color="@("Orange")"></TreeMapLeafColorMapping>
+            <TreeMapLeafColorMapping From="3000" To="20000" Color="@("Green")"></TreeMapLeafColorMapping>
+        </TreeMapLeafColorMappings>
+    </TreeMapLeafItemSettings>
+</SfTreeMap>
+
+@code{
+
+    public class Country
+    {
+        public string Name { get; set; }
+        public double GDP { get; set; }
+    }
+
+    private List<Country> growthReport = new List<Country>()
+{
+        new Country { Name = "United States", GDP = 17946 },
+        new Country { Name = "China", GDP = 10866 },
+        new Country { Name = "Japan", GDP = 4123 },
+        new Country { Name = "Germany", GDP = 3355 },
+        new Country { Name = "United Kingdom", GDP = 2848 },
+        new Country { Name = "France", GDP = 2421 },
+        new Country { Name = "India", GDP = 2073 },
+        new Country { Name = "Italy", GDP = 1814 },
+        new Country { Name = "Brazil", GDP = 1774 },
+        new Country { Name = "Canada", GDP = 1550 }
+    };
+}
