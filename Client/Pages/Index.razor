@@ -1,0 +1,37 @@
+﻿@page "/"
+
+<SfTreeMap DataSource="@growthReport"
+           WeightValuePath="GDP"
+           TValue="Country"
+           RangeColorValuePath="GDP">
+    <TreeMapTitleSettings Text="Top 10 countries by GDP Nominal - 2015"></TreeMapTitleSettings>
+    <TreeMapLeafItemSettings LabelPath="Name" Fill="lightgray">
+        <TreeMapLeafColorMappings>
+            <TreeMapLeafColorMapping StartRange="0" EndRange="3000" Color="@(new string[] { "Orange" })"></TreeMapLeafColorMapping>
+            <TreeMapLeafColorMapping StartRange="3000" EndRange="20000" Color="@(new string[] { "Green" })"></TreeMapLeafColorMapping>
+        </TreeMapLeafColorMappings>
+    </TreeMapLeafItemSettings>
+</SfTreeMap>
+
+@code {
+
+    public class Country
+    {
+        public string Name { get; set; }
+        public double GDP { get; set; }
+    }
+
+    private List<Country> growthReport = new List<Country>()
+{
+        new Country { Name = "United States", GDP = 17946 },
+        new Country { Name = "China", GDP = 10866 },
+        new Country { Name = "Japan", GDP = 4123 },
+        new Country { Name = "Germany", GDP = 3355 },
+        new Country { Name = "United Kingdom", GDP = 2848 },
+        new Country { Name = "France", GDP = 2421 },
+        new Country { Name = "India", GDP = 2073 },
+        new Country { Name = "Italy", GDP = 1814 },
+        new Country { Name = "Brazil", GDP = 1774 },
+        new Country { Name = "Canada", GDP = 1550 }
+    };
+}
